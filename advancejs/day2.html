@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day2</title>
+</head>
+<body>
+<script>
+    /*function Goods(name,price,count) {
+        this.n = name
+        this.p = price
+        this.c = count
+    }
+
+    let xm = new Goods('小米',1999,1)
+    let hw = new Goods('华为',2999,10)
+    let oppo = new Goods('OPPO',3999,5)
+
+    console.log(xm)
+    console.log(hw)
+    console.log(oppo)*/
+
+    const arr = [{ name: '张三', salary: 10000
+    }, {
+        name: '李四', salary: 15000
+    }, {
+        name: '王五',
+        salary: 20000
+    }
+    ]
+
+    let reduce = arr.map(i => i.salary).reduce((n, c) => {
+        return n + c
+    },0);
+
+
+
+
+    console.log(reduce)
+</script>
+</body>
+</html>

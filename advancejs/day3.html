@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day3</title>
+</head>
+<body>
+<script>
+   let arr = [1,3,5,2,10,8,4]
+
+   Array.prototype.max = function () {
+       return this.reduce(function (l,c){
+           return l+c
+       },0)
+   }
+
+
+   console.log(arr.max())
+
+</script>
+</body>
+</html>

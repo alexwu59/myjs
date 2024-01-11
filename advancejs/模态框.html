@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>面向对象封装消息提示插件</title>
+  <style>
+    .modal {
+      width: 300px;
+      min-height: 100px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      background-color: #fff;
+    }
+
+    .modal .header {
+      line-height: 40px;
+      padding: 0 10px;
+      position: relative;
+      font-size: 20px;
+    }
+
+    .modal .header i {
+      font-style: normal;
+      color: #999;
+      position: absolute;
+      right: 15px;
+      top: -2px;
+      cursor: pointer;
+    }
+
+    .modal .body {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .modal .footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+    }
+
+    .modal .footer a {
+      padding: 3px 8px;
+      background: #ccc;
+      text-decoration: none;
+      color: #fff;
+      border-radius: 2px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .modal .footer a.submit {
+      background-color: #369;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="delete">删除</button>
+  <button id="login">登录</button>
+
+  <div id="main"></div>
+
+  <script>
+
+    let del = document.querySelector("#delete");
+    let login = document.querySelector("#login");
+
+
+    del.addEventListener('click',function (e) {
+      e.preventDefault()
+      let element = document.querySelector(".modal");
+      element && element.remove()
+      let mdel = new Model('我是删除','删除desc');
+      mdel.open()
+    })
+
+    login.addEventListener('click',function (e) {
+      e.preventDefault()
+      let mdel = new Model('我是登录','登录desc');
+      mdel.open()
+    })
+
+    function Model(title,desc) {
+      this.modelBox = document.createElement("div")
+      this.modelBox.className = 'modal'
+      this.modelBox.innerHTML = `<div class="header">${title}<i>x</i></div>
+                            <div class="body">${desc}</div>`
+
+    }
+
+    Model.prototype.open = function () {
+      document.body.append(this.modelBox)
+
+      document.querySelector("i").addEventListener('click',() => {
+        this.close()
+      })
+
+    }
+    Model.prototype.close = function () {
+      this.modelBox.remove()
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>
